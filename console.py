@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''Cmd module'''
 import cmd
+import sys
 
 
 class HBNBCommand(cmd.Cmd):
