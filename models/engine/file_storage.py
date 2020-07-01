@@ -38,11 +38,11 @@ class FileStorage():
         '''deserializes the JSON file to __objects (only if the JSON file
         (__file_path) exists ; otherwise, do nothing.
          If the file doesn’t exist, no exception should be raised)'''
-        if path.exists(FileStorage.__file_path):
+        if path.isfile(FileStorage.__file_path):
             with open(FileStorage.__file_path, "r") as xk:
                 o = json.load(xk)
                 mydict = {}
-                for key, value in obj.items():
+                for key, value in o.items():
                     mydict[key] = self.instances[value["__class__"]](**value)
                 FileStorage.__objects = mydict
         else:
