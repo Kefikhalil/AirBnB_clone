@@ -1,7 +1,8 @@
+#!/usr/bin/python3
+''' FileStorage module'''
 from models.base_model import BaseModel
 import json
 from os import path
-''' FileStorage module'''
 
 
 class FileStorage():
@@ -12,7 +13,12 @@ class FileStorage():
     __objects = {}
 
     instances = {
-        "BaseModel": BaseModel
+        "BaseModel": BaseModel,
+        "User": User,
+        "State": State,
+        "City": City, "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review}
     }
 
     def all(self):
