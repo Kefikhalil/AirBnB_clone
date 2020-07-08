@@ -19,7 +19,7 @@ class FileStorage():
         "City": City, "Amenity": Amenity,
         "Place": Place,
         "Review": Review}
-    }
+
 
     def all(self):
         '''returns the dictionary __objects'''
