@@ -26,11 +26,9 @@ class BaseModel():
                     setattr(self, key, value)
         else:
             models.storage.new(self)
-            
 
     def __str__(self):
-        """returns a string of class name, id, and dictionary"""    
-        
+        """returns a string of class name, id, and dictionary"""
         return "[{}] ({}) {}".format(
             type(self).__name__, self.id, self.__dict__)
 
@@ -46,9 +44,9 @@ class BaseModel():
         Return:
             return a dictionary of all the key values in __dict__
         """
-
         my_dict = dict(self.__dict__)
         my_dict["__class__"] = str(type(self).__name__)
         my_dict["created_at"] = self.created_at.isoformat()
         my_dict["updated_at"] = self.updated_at.isoformat()
         return my_dict
+    
