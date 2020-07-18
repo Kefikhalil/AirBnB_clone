@@ -16,7 +16,6 @@ class BaseModel():
             updated_at: updated date
         """
 
-        from models import storage
         self.id = str(uuid.uuid4())
         self.created_at = self.updated_at = datetime.now()
         if kwargs:
@@ -26,13 +25,12 @@ class BaseModel():
                 if key != "__class__":
                     setattr(self, key, value)
         else:
-            storage.new(self)
+            models.storage.new(self)
             
 
     def __str__(self):
         """returns a string of class name, id, and dictionary"""    
         
-        from models import storage
         return "[{}] ({}) {}".format(
             type(self).__name__, self.id, self.__dict__)
 
@@ -40,9 +38,8 @@ class BaseModel():
         '''
             Update the updated_at attribute with new.
         '''
-        from models import storage
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """creates dictionary of the class
@@ -50,7 +47,6 @@ class BaseModel():
             return a dictionary of all the key values in __dict__
         """
 
-        from models import storage
         my_dict = dict(self.__dict__)
         my_dict["__class__"] = str(type(self).__name__)
         my_dict["created_at"] = self.created_at.isoformat()
